@@ -25,13 +25,7 @@ import glob
 
 
 
-import os
-import conda
 
-conda_file_dir = conda.__file__
-conda_dir = conda_file_dir.split('lib')[0]
-proj_lib = os.path.join(os.path.join(conda_dir, 'share'), 'proj')
-os.environ["PROJ_LIB"] = proj_lib
 
 import pyart
 
@@ -120,7 +114,7 @@ for i in range(0,len(elevation)):
     #%%
     
 
-label_size = 22   
+label_size = 24
 tick_label_declutter = 200
 
 
@@ -225,65 +219,65 @@ plt.show()
 #Plot time composites
 
 
-
+tick_label_size = 32
 
 fig,ax = plt.subplots(figsize=(14,14))
 plt.contourf(s/1000,height/1000, zh_mean, extend = 'both', cmap = 'pyart_NWSRef', levels = np.arange(5,70,step = 2.5))
 cbar = plt.colorbar()
-cbar.ax.tick_params(labelsize = label_size)
-cbar.set_label(label = '[dBZ]',size = label_size)
-plt.xlabel('Distance from Radar (km)', size = label_size)
-plt.ylabel('Altitude (km)', size = label_size)
+cbar.ax.tick_params(labelsize = tick_label_size)
+cbar.set_label(label = '[dBZ]',size = tick_label_size)
+plt.xlabel('Distance from Radar (km)', size = tick_label_size)
+plt.ylabel('Altitude (km)', size = tick_label_size)
 
 xlabels = np.arange(0,175,10)
 ylabels = np.arange(0,11,1)
 
 plt.ylim(0,10)
 
-plt.xticks(xlabels, size = label_size)
-plt.yticks(ylabels, size = label_size)
+plt.xticks(xlabels, size = tick_label_size)
+plt.yticks(ylabels, size = tick_label_size)
 plt.xlim(0,70)
-plt.title(r'SMART-R1 $160^{o}$ Azimuth Mean $Z_{H}$ 8/27 0211-0259 UTC', size = label_size)
+plt.title(r'SR1-P $160^{o}$ Azimuth Mean $Z_{H}$ 8/27 0211-0259 UTC', size = label_size)
 plt.show()
 
 
 fig,ax = plt.subplots(figsize=(14,14))
-plt.contourf(s/1000,height/1000, zdr_mean, extend = 'both', cmap = 'pyart_NWSRef', levels = np.arange(0,4,step = 0.1))
+plt.contourf(s/1000,height/1000, zdr_mean-1.7, extend = 'both', cmap = 'pyart_NWSRef', levels = np.arange(-1,3,step = 0.1))
 cbar = plt.colorbar()
-cbar.ax.tick_params(labelsize = label_size)
-cbar.set_label(label = '[dB]',size = label_size)
-plt.xlabel('Distance from Radar (km)', size = label_size)
-plt.ylabel('Altitude (km)', size = label_size)
+cbar.ax.tick_params(labelsize = tick_label_size)
+cbar.set_label(label = '[dB]',size = tick_label_size)
+plt.xlabel('Distance from Radar (km)', size = tick_label_size)
+plt.ylabel('Altitude (km)', size = tick_label_size)
 
 xlabels = np.arange(0,175,10)
 ylabels = np.arange(0,11,1)
 
 plt.ylim(0,10)
 
-plt.xticks(xlabels, size = label_size)
-plt.yticks(ylabels, size = label_size)
+plt.xticks(xlabels, size = tick_label_size)
+plt.yticks(ylabels, size = tick_label_size)
 plt.xlim(0,70)
-plt.title(r'SMART-R1 $160^{o}$ Azimuth Mean $Z_{DR}$ 8/27 0211-0259 UTC', size = label_size)
+plt.title(r'SR1-P $160^{o}$ Azimuth Mean $Z_{DR}$ 8/27 0211-0259 UTC', size = label_size)
 plt.show()
 
 
 fig,ax = plt.subplots(figsize=(14,14))
 plt.contourf(s/1000,height/1000, rhohv_mean, extend = 'both', cmap = 'pyart_NWSRef', levels = np.arange(0.9,1,step = 0.01))
 cbar = plt.colorbar()
-cbar.ax.tick_params(labelsize = label_size)
-cbar.set_label(label = r'[$\rho_{hv}$]',size = label_size)
-plt.xlabel('Distance from Radar (km)', size = label_size)
-plt.ylabel('Altitude (km)', size = label_size)
+cbar.ax.tick_params(labelsize = tick_label_size)
+cbar.set_label(label = r'[$\rho_{hv}$]',size = tick_label_size)
+plt.xlabel('Distance from Radar (km)', size = tick_label_size)
+plt.ylabel('Altitude (km)', size = tick_label_size)
 
 xlabels = np.arange(0,175,10)
 ylabels = np.arange(0,11,1)
 
 plt.ylim(0,10)
 
-plt.xticks(xlabels, size = label_size)
-plt.yticks(ylabels, size = label_size)
+plt.xticks(xlabels, size = tick_label_size)
+plt.yticks(ylabels, size = tick_label_size)
 plt.xlim(0,70)
-plt.title(r'SMART-R1 $160^{o}$ Azimuth Mean $\rho_{hv}$ 8/27 0211-0259 UTC', size = label_size)
+plt.title(r'SR1-P $160^{o}$ Azimuth Mean $\rho_{hv}$ 8/27 0211-0259 UTC', size = label_size)
 plt.show()
 
 
